@@ -1,0 +1,45 @@
+dateModified: 1713696414
+email:
+  fromEmail: lukecoleman123@gmail.com
+  fromName: 'Recipe Hub'
+  transportType: craft\mail\transportadapters\Sendmail
+meta:
+  __names__:
+    1d4f7b35-8c8e-4488-9d9b-b16d04f67c83: 'Recipe Hub' # Recipe Hub
+    1ff795e3-5e1a-42bb-852f-f8f74a6c26b4: 'Public Schema' # Public Schema
+    2bc8c824-996d-441f-bb7f-86fb8840f822: Steps # Steps
+    2c0576d5-750f-4988-b304-f0ed10f9875b: Ingredient # Ingredient
+    04ebf9f6-3992-428b-a66a-cd73673be947: Common # Common
+    5cc8ec62-4467-4d94-bd79-0072886b93b3: Recipes # Recipes
+    21f0ad9c-3760-44a9-ab74-b04e3c1ef645: Book # Book
+    58a0bd55-b284-4bee-bbeb-02e805ce0441: Ingredient # Ingredient
+    99f59a5d-6f70-4fd0-952c-9e46b6b8c49f: Page # Page
+    845fa52f-5d7b-45d1-943a-33e336612d23: Ingredients # Ingredients
+    8207d7dc-5e3f-47fa-93ae-708d40b60411: 'Step Instructions' # Step Instructions
+    59747f3c-5af9-4e9e-9d4c-2d58f02e7491: Default # Default
+    554308e6-8741-4b53-95d1-d45bb4e9d083: step # step
+    85216358-bb8b-4f50-bd01-b7b7e92c6723: 'Cooking Time' # Cooking Time
+    a5cf5250-9e72-482f-ba16-46e6dd7601c3: Serves # Serves
+    a625fd61-2f2f-4b9e-a4a3-d409f9594393: Recipes # Recipes
+    d2d28f7b-04c0-4f93-96c2-8e9acbecdcef: 'Recipe Type' # Recipe Type
+    da50b6f8-c17d-46f2-8dbd-6a32d5094551: 'Recipe Hub' # Recipe Hub
+    ef82067b-3fcf-4620-8255-b351f9e1e2ae: Book # Book
+    f685ffa1-9e30-41ba-af95-060720276a32: 'Recipe Type' # Recipe Type
+plugins:
+  redactor:
+    edition: standard
+    enabled: true
+    schemaVersion: 2.3.0
+system:
+  edition: solo
+  live: true
+  name: 'Recipe Hub'
+  retryDuration: null
+  schemaVersion: 4.5.3.0
+  timeZone: Europe/London
+users:
+  allowPublicRegistration: false
+  defaultGroup: null
+  photoSubpath: null
+  photoVolumeUid: null
+  requireEmailVerification: true

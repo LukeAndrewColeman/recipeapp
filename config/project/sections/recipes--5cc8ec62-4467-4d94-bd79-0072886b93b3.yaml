@@ -1,0 +1,12 @@
+defaultPlacement: end
+enableVersioning: true
+handle: recipes
+name: Recipes
+propagationMethod: all
+siteSettings:
+  1d4f7b35-8c8e-4488-9d9b-b16d04f67c83: # Recipe Hub
+    enabledByDefault: true
+    hasUrls: true
+    template: recipes/_entry
+    uriFormat: 'recipes/{slug}'
+type: channel

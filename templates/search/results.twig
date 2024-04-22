@@ -1,0 +1,28 @@
+{% extends 'layouts/main.twig' %}
+{% block page_content %}
+{% set query = craft.app.request.getParam('q') %}
+{% set entries = craft.entries.search(query).orderBy('score').all() %}
+    <h1 class="font-bold text-4xl text-center mb-12">Search results for "{{query}}"</h1>
+    {% if entries %}
+        <div class="grid grid-col md:grid-cols-4">
+            <div class="col-span-4">
+                <div class="grid grid-col md:grid-cols-4 gap-6">
+                    {% for entry in entries %}
+                        <a href="{{ entry.url }}" class="relative bg-blue-50 cursor-pointer rounded flex flex-col justify-between p-3">
+                            <div class="bg-[#66CECF] text-white p-2 h-8 w-8 rounded-full flex justify-center items-center text-xs">{{ entry.page }}</div>
+                            <h3 class="text-xl font-bold py-2">{{ entry.title }}</h3>
+                            <div>
+                                {% set categories = entry.book %}
+                                {% for category in categories %}
+                                    <p class="">{{ category.title }}</p>
+                                {% endfor %}
+                            </div>
+                        </a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <h3 class="text-center text-xl">Sorry no recipes found</h3>
+    {% endif %}
+{% endblock %}

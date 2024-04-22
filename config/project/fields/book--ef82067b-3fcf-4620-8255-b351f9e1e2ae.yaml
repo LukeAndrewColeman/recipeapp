@@ -1,0 +1,23 @@
+columnSuffix: null
+contentColumnType: string
+fieldGroup: a625fd61-2f2f-4b9e-a4a3-d409f9594393 # Recipes
+handle: book
+instructions: null
+name: Book
+searchable: false
+settings:
+  allowSelfRelations: false
+  branchLimit: null
+  localizeRelations: false
+  maintainHierarchy: false
+  maxRelations: null
+  minRelations: 1
+  selectionLabel: null
+  showSiteMenu: false
+  source: 'group:21f0ad9c-3760-44a9-ab74-b04e3c1ef645' # Book
+  targetSiteId: null
+  validateRelatedElements: false
+  viewMode: null
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Categories

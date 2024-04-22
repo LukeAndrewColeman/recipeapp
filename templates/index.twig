@@ -1,0 +1,50 @@
+{% extends 'layouts/main.twig' %}
+{% block page_content %}
+	<div class="grid grid-col md:grid-cols-4">
+		<div class="col-span-1 mb-4 flex md:flex-col">
+			<div class="p-4 md:p-0">
+				<h1 class="text-2xl font-bold mb-2">Books</h1>
+				<ul class="flex flex-col gap-3">
+					{% set categories = craft.categories.group('book').all() %}
+					{% for category in categories %}
+						<p class="">
+							<a href="{{ category.url }}">{{ category.title }}</a>
+						</p>
+					{% endfor %}
+				</ul>
+			</div>
+			<div class="p-4 md:p-0">
+				<h1 class="text-2xl font-bold mt-0 md:mt-8 mb-2">Recipes</h1>
+				<ul class="flex flex-col gap-3">
+					{% set categories = craft.categories.group('recipeType').all() %}
+					{% for category in categories %}
+						<li class="">
+							<a href="{{ category.url }}">{{ category.title }}</a>
+						</li>
+					{% endfor %}
+				</ul>
+			</div>
+		</div>
+		<div class="col-span-3">
+			<form action="{{ url('search/results') }}" class="mb-8 flex gap-6">
+				<input type="text" name="q" class="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-800 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6" placeholder="Search Recipe">
+				<button type="submit" class=" px-4 py-2 bg-[#FFC035] rounded-md">Search</button>
+			</form>
+			<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+				{% set entries = craft.entries.section('recipes').all() %}
+				{% for entry in entries %}
+					<a href="{{ entry.url }}" class="relative bg-blue-50 cursor-pointer rounded flex flex-col justify-between p-4">
+						<div class="bg-[#66CECF] text-white p-2 h-8 w-8 rounded-full flex justify-center items-center text-xs">{{ entry.page }}</div>
+						<h3 class="text-xl font-bold py-2">{{ entry.title }}</h3>
+						<div>
+							{% set categories = entry.book %}
+							{% for category in categories %}
+								<p class="">{{ category.title }}</p>
+							{% endfor %}
+						</div>
+					</a>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+{% endblock %}

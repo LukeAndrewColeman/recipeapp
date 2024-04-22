@@ -1,0 +1,19 @@
+columnSuffix: fcqykkbr
+contentColumnType: text
+fieldGroup: a625fd61-2f2f-4b9e-a4a3-d409f9594393 # Recipes
+handle: cookingTime
+instructions: null
+name: 'Cooking Time'
+searchable: false
+settings:
+  byteLimit: null
+  charLimit: null
+  code: false
+  columnType: null
+  initialRows: 4
+  multiline: false
+  placeholder: null
+  uiMode: normal
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\PlainText

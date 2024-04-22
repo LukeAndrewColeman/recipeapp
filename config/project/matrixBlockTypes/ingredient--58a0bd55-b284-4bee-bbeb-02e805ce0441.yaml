@@ -1,0 +1,46 @@
+field: 845fa52f-5d7b-45d1-943a-33e336612d23 # Ingredients
+fieldLayouts:
+  abb481c8-a29a-4d1b-8fdc-473c293521b2:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: 2c0576d5-750f-4988-b304-f0ed10f9875b # Ingredient
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 8a10d2e1-9e6c-48ee-b5b2-1ee0a3a35f94
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 0938f2cc-d83b-488c-a4b1-fe07a60ffd43
+        userCondition: null
+fields:
+  2c0576d5-750f-4988-b304-f0ed10f9875b: # Ingredient
+    columnSuffix: tzyvqblr
+    contentColumnType: text
+    fieldGroup: null
+    handle: ingredient
+    instructions: null
+    name: Ingredient
+    searchable: false
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: false
+      columnType: null
+      initialRows: 4
+      multiline: false
+      placeholder: null
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+handle: ingredient
+name: Ingredient
+sortOrder: 1

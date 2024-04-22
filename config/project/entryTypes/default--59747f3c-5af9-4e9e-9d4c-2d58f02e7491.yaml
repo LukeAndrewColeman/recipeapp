@@ -1,0 +1,148 @@
+fieldLayouts:
+  26abfe5d-d89f-4be9-be74-473d919d6927:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            disabled: false
+            elementCondition: null
+            id: null
+            inputType: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            requirable: false
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: debc4766-fb32-45df-8140-883bc37e22e6
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 85216358-bb8b-4f50-bd01-b7b7e92c6723 # Cooking Time
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: ec42a5ef-bebc-4818-9aca-8fca76a04bc7
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: a5cf5250-9e72-482f-ba16-46e6dd7601c3 # Serves
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 4b4f1c7e-2460-4af7-a87f-2780234b2d90
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            type: craft\fieldlayoutelements\HorizontalRule
+            uid: e5a116ea-ff64-467d-9ad7-e0b9e557c10b
+            userCondition: null
+        name: General
+        uid: dfcd92e1-0e74-4ac7-823b-a83fcecdef4d
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: f685ffa1-9e30-41ba-af95-060720276a32 # Recipe Type
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 65e3786d-8200-46be-a69e-3327279e853a
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 845fa52f-5d7b-45d1-943a-33e336612d23 # Ingredients
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: d637ae4b-6776-4363-9c99-ec07533c9c32
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 2bc8c824-996d-441f-bb7f-86fb8840f822 # Steps
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 1f25d9d8-365a-4762-ae5b-ee0e30495a61
+            userCondition: null
+            warning: null
+            width: 100
+        name: 'Recipe Info'
+        uid: 0077c692-7b0b-42e8-85b4-93c580cb3986
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: ef82067b-3fcf-4620-8255-b351f9e1e2ae # Book
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: f077ccc1-4b36-4c8c-ab55-055102b1f6a3
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 99f59a5d-6f70-4fd0-952c-9e46b6b8c49f # Page
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: ec8a941c-86de-44d0-9dcf-0760047c80cc
+            userCondition: null
+            warning: null
+            width: 100
+        name: 'Book Info'
+        uid: ba736baf-a0cb-4798-813d-d71856bcfa27
+        userCondition: null
+handle: default
+hasTitleField: true
+name: Default
+section: 5cc8ec62-4467-4d94-bd79-0072886b93b3 # Recipes
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+sortOrder: 1
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

@@ -1,0 +1,47 @@
+defaultPlacement: end
+fieldLayouts:
+  7944c4b9-a7d4-4394-bcfa-5bc085198452:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            disabled: false
+            elementCondition: null
+            id: null
+            inputType: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            requirable: false
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\TitleField
+            uid: 691398d6-c580-400b-893e-41c913a9b462
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: be7d9fd2-943b-49a5-b8e6-b71d9b0d20c6
+        userCondition: null
+handle: book
+name: Book
+siteSettings:
+  1d4f7b35-8c8e-4488-9d9b-b16d04f67c83: # Recipe Hub
+    hasUrls: true
+    template: books/_entry.twig
+    uriFormat: 'book/{slug}'
+structure:
+  maxLevels: 1
+  uid: cf80b73d-4ed4-4453-98f1-ca3917fe7873
