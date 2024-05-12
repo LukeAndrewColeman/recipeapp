@@ -19,4 +19,5 @@ jobs:
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           port: 21
+          args: -vv  # Enable verbose logging
 
