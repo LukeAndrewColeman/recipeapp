@@ -1,0 +1,34 @@
+<div class="button-fade asset-image-preview">
+    <div class="buttons">
+        <div class="btn" id="toggle-focal">
+        </div>
+    </div>
+    {{ tag('img', {
+        src: url,
+        width: asset.width,
+        height: asset.height,
+        alt: asset.alt,
+        data: {
+            uid: asset.uid,
+            focal: asset.focalPoint|join(';'),
+            maxWidth: asset.width,
+            maxHeight: asset.height,
+        },
+        onload: 'setTimeout(Craft.PreviewFileModal.resizePreviewImage, 100)',
+    }) }}
+</div>
+
+{% do view.registerAssetBundle("craft\\web\\assets\\focalpoint\\FocalPointAsset") %}
+{% do view.registerTranslations('app', [
+    'Enable focal point',
+    'Disable focal point',
+    'Saving…',
+]) %}
+
+{% js %}
+  if (window.imageFocalPoint) {
+    window.imageFocalPoint.destruct();
+    delete window.imageFocalPoint;
+  }
+  window.imageFocalPoint = new Craft.FocalPoint(Craft.PreviewFileModal.openInstance.$container.find('.asset-image-preview'), $('#toggle-focal'), {{ editFocal|default(false) }});
+{% endjs %}

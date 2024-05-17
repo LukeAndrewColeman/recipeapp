@@ -2,7 +2,8 @@
 {% block page_content %}
 {% set query = craft.app.request.getParam('q') %}
 {% set entries = craft.entries.search(query).orderBy('score').all() %}
-    <h1 class="font-bold text-4xl text-center mb-12">Search results for "{{query}}"</h1>
+    <a class="font-bold" href="/">&#8592; Back</a>
+    <h1 class="mt-8 font-bold text-4xl text-center mb-12">Search results for "{{query}}"</h1>
     {% if entries %}
         <div class="grid grid-col md:grid-cols-4">
             <div class="col-span-4">
