@@ -19,15 +19,15 @@ cmds = [
 [start]
 cmd = "php-fpm -D && nginx -g 'daemon off;'"
 
-[start.nginx]
-template = """
+[nginx.config]
+content = '''
 events {
     worker_connections 1024;
 }
 http {
     include mime.types;
     server {
-        listen $PORT;
+        listen ${PORT};
         root /app/web;
         index index.php;
 
@@ -35,7 +35,7 @@ http {
             try_files $uri $uri/ /index.php?$query_string;
         }
 
-        location ~ \.php$ {
+        location ~ \\.php$ {
             fastcgi_pass 127.0.0.1:9000;
             fastcgi_index index.php;
             fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
@@ -43,4 +43,4 @@ http {
         }
     }
 }
-"""
+'''
