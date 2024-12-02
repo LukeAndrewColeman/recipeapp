@@ -1,46 +1,17 @@
 [phases.setup]
-nixPkgs = [
-    "php80",
-    "php80Extensions.curl",
-    "php80Extensions.dom",
-    "php80Extensions.gd",
-    "php80Extensions.mbstring",
-    "php80Extensions.pdo_mysql",
-    "php80Extensions.zip",
-    "composer",
+aptPkgs = [
+    "php8.0-fpm",
+    "php8.0-mysql",
+    "php8.0-mbstring",
+    "php8.0-xml",
+    "php8.0-curl",
     "nginx"
 ]
 
-[phases.install]
+[phases.build]
 cmds = [
-    "composer install --no-dev --optimize-autoloader --no-interaction"
+    "composer install --no-dev --optimize-autoloader"
 ]
 
 [start]
-cmd = "php-fpm -D && nginx -g 'daemon off;'"
-
-[nginx.config]
-content = '''
-events {
-    worker_connections 1024;
-}
-http {
-    include mime.types;
-    server {
-        listen ${PORT};
-        root /app/web;
-        index index.php;
-
-        location / {
-            try_files $uri $uri/ /index.php?$query_string;
-        }
-
-        location ~ \\.php$ {
-            fastcgi_pass 127.0.0.1:9000;
-            fastcgi_index index.php;
-            fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-            include fastcgi_params;
-        }
-    }
-}
-'''
+cmd = "php-fpm && nginx -g 'daemon off;'"
