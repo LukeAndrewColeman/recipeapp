@@ -1,0 +1,20 @@
+[phases.setup]
+nixPkgs = [
+  "php80Packages.composer",  # Composer for PHP dependency management
+  "php80",                   # PHP 8.0
+  "nginx"                    # Nginx web server
+]
+
+[phases.build]
+cmds = [
+  "composer install --no-dev --optimize-autoloader"  # Install PHP dependencies
+]
+
+[phases.start]
+cmds = [
+  "php-fpm -D",              # Start PHP FastCGI Process Manager
+  "nginx -g 'daemon off;'"   # Start Nginx in the foreground
+]
+
+[phases.start.environment]
+PORT = "80"                  # Expose port 80
