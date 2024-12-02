@@ -1,20 +1,46 @@
 [phases.setup]
 nixPkgs = [
-  "php80Packages.composer",  # Composer for PHP dependency management
-  "php80",                   # PHP 8.0
-  "nginx"                    # Nginx web server
+    "php80",
+    "php80Extensions.curl",
+    "php80Extensions.dom",
+    "php80Extensions.gd",
+    "php80Extensions.mbstring",
+    "php80Extensions.pdo_mysql",
+    "php80Extensions.zip",
+    "composer",
+    "nginx"
 ]
 
-[phases.build]
+[phases.install]
 cmds = [
-  "composer install --no-dev --optimize-autoloader"  # Install PHP dependencies
+    "composer install --no-dev --optimize-autoloader --no-interaction"
 ]
 
-[phases.start]
-cmds = [
-  "php-fpm -D",              # Start PHP FastCGI Process Manager
-  "nginx -g 'daemon off;'"   # Start Nginx in the foreground
-]
+[start]
+cmd = "php-fpm -D && nginx -g 'daemon off;'"
 
-[phases.start.environment]
-PORT = "80"                  # Expose port 80
+[start.nginx]
+template = """
+events {
+    worker_connections 1024;
+}
+http {
+    include mime.types;
+    server {
+        listen $PORT;
+        root /app/web;
+        index index.php;
+
+        location / {
+            try_files $uri $uri/ /index.php?$query_string;
+        }
+
+        location ~ \.php$ {
+            fastcgi_pass 127.0.0.1:9000;
+            fastcgi_index index.php;
+            fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+            include fastcgi_params;
+        }
+    }
+}
+"""
