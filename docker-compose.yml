@@ -1,0 +1,31 @@
+version: '3'
+services:
+  web:
+    image: craftcms/nginx:8.1
+    environment:
+      - CRAFT_DB_DRIVER=mysql
+      - CRAFT_DB_SERVER=database
+      - CRAFT_DB_PORT=3306
+      - CRAFT_DB_DATABASE=craft
+      - CRAFT_DB_USER=${DB_USER}
+      - CRAFT_DB_PASSWORD=${DB_PASSWORD}
+      - CRAFT_ENVIRONMENT=production
+    volumes:
+      - ./:/app
+    ports:
+      - "8080:80"
+    depends_on:
+      - database
+
+  database:
+    image: mysql:8.0
+    environment:
+      - MYSQL_DATABASE=craft
+      - MYSQL_USER=${DB_USER}
+      - MYSQL_PASSWORD=${DB_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+  db_data:
