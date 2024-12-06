@@ -9,6 +9,9 @@ RUN apt-get update && apt-get install -y nginx libpng-dev libjpeg-dev libfreetyp
 WORKDIR /var/www/html
 COPY . .
 
+# Ensure required directories exist
+RUN mkdir -p /var/www/html/storage /var/www/html/web/uploads
+
 # Set permissions for storage and uploads
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/web/uploads
 
