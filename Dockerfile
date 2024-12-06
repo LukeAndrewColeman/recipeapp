@@ -1,56 +1,22 @@
-FROM php:8.0-fpm
+FROM php:8.1-fpm
 
-# Install system dependencies
-RUN apt-get update && apt-get install -y \
-    git \
-    curl \
-    libpng-dev \
-    libonig-dev \
-    libxml2-dev \
-    zip \
-    unzip \
-    nginx
+# Install system dependencies and PHP extensions
+RUN apt-get update && apt-get install -y nginx libpng-dev libjpeg-dev libfreetype6-dev libzip-dev unzip git \
+    && docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install pdo_mysql gd zip
 
-# Clear cache
-RUN apt-get clean && rm -rf /var/lib/apt/lists/*
-
-# Install PHP extensions
-RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
-
-# Get latest Composer
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
-
-# Set working directory
+# Copy application files
 WORKDIR /var/www/html
-
-# Copy existing application directory
 COPY . .
 
-# Install dependencies
-RUN composer install --no-dev --optimize-autoloader --no-interaction
+# Set permissions for storage and uploads
+RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/web/uploads
 
-# Copy nginx configuration
-RUN echo ' \
-server { \
-    listen 80; \
-    root /var/www/html/web; \
-    index index.php; \
-    location / { \
-        try_files $uri $uri/ /index.php?$query_string; \
-    } \
-    location ~ \.php$ { \
-        fastcgi_pass 127.0.0.1:9000; \
-        fastcgi_index index.php; \
-        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name; \
-        include fastcgi_params; \
-    } \
-}' > /etc/nginx/sites-available/default
+# Configure NGINX
+COPY nginx.conf /etc/nginx/nginx.conf
 
-# Expose port 80
+# Expose ports
 EXPOSE 80
 
-# Create start script
-RUN echo '#!/bin/sh\nphp-fpm -D && nginx -g "daemon off;"' > /start.sh && chmod +x /start.sh
-
-# Start PHP-FPM and Nginx
-CMD ["/start.sh"]
+# Start NGINX and PHP-FPM
+CMD ["sh", "-c", "php-fpm & nginx -g 'daemon off;'"]
