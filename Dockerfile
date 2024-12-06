@@ -1,25 +1,14 @@
-FROM php:8.1-fpm
+# Use the NGINX image for a static site
+FROM nginx:latest
 
-# Install system dependencies and PHP extensions
-RUN apt-get update && apt-get install -y nginx libpng-dev libjpeg-dev libfreetype6-dev libzip-dev unzip git \
-    && docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install pdo_mysql gd zip
+# Copy your app into the container
+COPY . /var/www/html
 
-# Copy application files
-WORKDIR /var/www/html
-COPY . .
+# Copy your custom NGINX configuration
+COPY ./nginx.conf /etc/nginx/conf.d/default.conf
 
-# Ensure required directories exist
-RUN mkdir -p /var/www/html/storage /var/www/html/web/uploads
+# Set permissions (if needed)
+RUN chmod -R 755 /var/www/html
 
-# Set permissions for storage and uploads
-RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/web/uploads
-
-# Configure NGINX
-COPY nginx.conf /etc/nginx/nginx.conf
-
-# Expose ports
+# Expose the required port
 EXPOSE 80
-
-# Start NGINX and PHP-FPM
-CMD ["sh", "-c", "php-fpm & nginx -g 'daemon off;'"]
